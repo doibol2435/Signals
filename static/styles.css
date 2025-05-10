@@ -1,0 +1,190 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+    background-color: #f2f6fa;
+    color: #2c3e50;
+    margin: 0;
+}
+
+h1, h2 {
+    color: #1b4f72;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+}
+
+table th, table td {
+    padding: 14px;
+    text-align: center;
+    border: 1px solid #e0e6ed;
+    font-size: 15px;
+}
+
+table th {
+    background-color: #2e86de;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f8fbff;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #cfd9e0;
+    border-radius: 6px;
+    width: 260px;
+    transition: border-color 0.3s;
+    background-color: #ffffff;
+    color: #2c3e50;
+}
+
+input[type="text"]:focus {
+    border-color: #2e86de;
+    outline: none;
+}
+
+button {
+    padding: 10px 22px;
+    font-size: 16px;
+    background-color: #2e86de;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #1b4f72;
+    transform: scale(1.03);
+}
+
+p {
+    font-size: 17px;
+    margin-bottom: 8px;
+    color: #34495e;
+}
+
+hr {
+    margin: 35px 0;
+    border: 0;
+    border-top: 1px solid #dcdfe3;
+}
+
+.coin-card {
+    background-color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.coin-card strong {
+    color: #2e86de;
+}
+
+.coin-card p {
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+.status-badge {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.status-badge.Long {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.status-badge.Short {
+    background-color: #c0392b;
+    color: #fff;
+}
+
+.status-badge.Wait {
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        display: none;
+    }
+
+    td {
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+        border: none;
+        border-bottom: 1px solid #e0e6ed;
+    }
+
+    td::before {
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        content: attr(data-label);
+        color: #7f8c8d;
+    }
+}
+@media (max-width: 480px) {
+    input[type="text"] {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .coin-card {
+        padding: 15px;
+    }
+}
+@media (max-width: 768px) {
+    h1, h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+/* Đảm bảo không có ruleset rỗng ({} trống) */
+/* Nếu bạn thấy đoạn như dưới đây, hãy xóa nó:
+.some-class {}
+*/
+
+/* Đảm bảo mỗi block CSS đều có ít nhất một thuộc tính bên trong {} */

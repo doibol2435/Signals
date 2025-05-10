@@ -1,0 +1,9 @@
+requests
+pandas
+numpy
+pandas_ta
+matplotlib
+mplfinance
+flask
+setuptools
+plotly

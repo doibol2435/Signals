@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Signals Dashboard (Bybit)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1, h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        .coin-card { border: 1px solid #ccc; padding: 10px; margin-top: 20px; background-color: #f9f9f9; }
+        .status-badge { 
+            padding: 5px 10px; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            display: inline-block; 
+            position: relative;
+        }
+        .flash-message {
+            font-weight: bold;
+            list-style: none;
+        }
+        .flash-message.success { color: green; }
+        .flash-message.error { color: red; }
+        .status-badge.futures::after {
+            content: '⚡ High-leverage futures trade';
+            visibility: hidden;
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.8em;
+            z-index: 10;
+        }
+        .status-badge.futures:hover::after {
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 Dự đoán Tín hiệu Giao dịch Crypto (Bybit)</h1>
+
+    <form method="POST" action="/">
+        <label for="coin">Nhập coin (ví dụ: BTCUSDT): </label>
+        <input type="text" name="coin" id="coin" placeholder="BTCUSDT" value="{{ coin | default('BTCUSDT') }}">
+        <button type="submit">Phân tích</button>
+    </form>
+
+    <div class="coin-card">
+        <h2>📌 Tín hiệu cho: {{ coin | default('N/A') }}</h2>
+        {% for timeframe, signal_info in signals.items() %}
+        <h3>{{ timeframe }}</h3>
+        <p>💰 Giá hiện tại: <strong>${{ signal_info.current_price | float | round(4) if signal_info.current_price is not none else 'N/A' }}</strong></p>
+        <p>📈 Tín hiệu kỹ thuật: <strong>{{ signal_info.signal | default('N/A') }}</strong></p>
+        <p>🎯 Entry: <strong>${{ signal_info.entry | float | round(4) if signal_info.entry is not none else 'N/A' }}</strong></p>
+        <p>✅ TP: <strong>${{ signal_info.tp | float | round(4) if signal_info.tp is not none else 'N/A' }}</strong></p>
+        <p>❌ SL: <strong>${{ signal_info.sl | float | round(4) if signal_info.sl is not none else 'N/A' }}</strong></p>
+        {% endfor %}
+    </div>
+
+    <form method="POST" action="/send">
+        <input type="hidden" name="coin" value="{{ coin | default('BTCUSDT') }}">
+        <button type="submit">📤 Gửi tín hiệu lên Telegram</button>
+    </form>
+
+    <div style="text-align:center;margin:10px 0;">
+        <span id="loading" style="display:none;">Đang tải dữ liệu...</span>
+        <span>Cập nhật sau <span id="countdown">30</span>s | Lần cập nhật cuối: <span id="last-updated"></span></span>
+    </div>
+
+    <hr>
+
+    <h2>🔥 Top Coin có tín hiệu TA (Bybit)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Ký hiệu</th>
+                <th>Khung thời gian</th>
+                <th>Giá hiện tại</th>
+                <th>Tín hiệu</th>
+                <th>Entry</th>
+                <th>TP</th>
+                <th>SL</th>
+            </tr>
+        </thead>
+        <tbody id="top-coins-table">
+            {% for coin in top_coins %}
+            <tr>
+                <td>{{ coin.symbol | default('N/A') }}</td>
+                <td>{{ coin.timeframe | default('N/A') }}</td>
+                <td>${{ coin.current_price | float | round(4) if coin.current_price is not none else 'N/A' }}</td>
+                <td>{{ coin.signal | default('N/A') }}</td>
+                <td>${{ coin.entry | float | round(4) if coin.entry is not none else 'N/A' }}</td>
+                <td>${{ coin.tp | float | round(4) if coin.tp is not none else 'N/A' }}</td>
+                <td>${{ coin.sl | float | round(4) if coin.sl is not none else 'N/A' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>📋 Tín hiệu đang theo dõi</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Coin</th>
+                <th>Khung thời gian</th>
+                <th>Tín hiệu</th>
+                <th>Entry</th>
+                <th>TP</th>
+                <th>SL</th>
+                <th>Giá hiện tại</th>
+                <th>Trạng thái</th>
+                <th>Thời gian</th>
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody id="active-signals-table">
+            {% for s in active_signals %}
+            <tr>
+                <td>{{ s.symbol | default('N/A') }}</td>
+                <td>{{ s.timeframe | default('N/A') }}</td>
+                <td>{{ s.signal | default('N/A') }}</td>
+                <td>${{ s.entry | float | round(4) if s.entry is not none else 'N/A' }}</td>
+                <td>${{ s.tp | float | round(4) if s.tp is not none else 'N/A' }}</td>
+                <td>${{ s.sl | float | round(4) if s.sl is not none else 'N/A' }}</td>
+                <td>${{ s.current_price | float | round(4) if s.current_price is defined and s.current_price is not none else 'N/A' }}</td>
+                <td><span class="status-badge {{ 'futures' if 'FUTURES' in s.signal else '' }}">{{ s.status | default('N/A') }}</span></td>
+                <td>{{ s.time | default('N/A') }}</td>
+                <td>{{ s.duration | default('N/A') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="signal-summary" style="max-width:600px;margin:20px auto 0 auto;">
+        <h2 style="font-size:1.2em;">📊 Thống kê tín hiệu</h2>
+        <table id="summary-table" style="margin-bottom:20px;">
+            <thead>
+                <tr>
+                    <th>Loại tín hiệu</th>
+                    <th>Số lượng</th>
+                    <th>Win</th>
+                    <th>Loss</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>LONG</td>
+                    <td id="count-long">{{ win_loss_stats.LONG.count if win_loss_stats and win_loss_stats.LONG is defined else 0 }}</td>
+                    <td id="win-long">{{ win_loss_stats.LONG.win if win_loss_stats and win_loss_stats.LONG is defined else 0 }}</td>
+                    <td id="loss-long">{{ win_loss_stats.LONG.loss if win_loss_stats and win_loss_stats.LONG is defined else 0 }}</td>
+                </tr>
+                <tr>
+                    <td>SHORT</td>
+                    <td id="count-short">{{ win_loss_stats.SHORT.count if win_loss_stats and win_loss_stats.SHORT is defined else 0 }}</td>
+                    <td id="win-short">{{ win_loss_stats.SHORT.win if win_loss_stats and win_loss_stats.SHORT is defined else 0 }}</td>
+                    <td id="loss-short">{{ win_loss_stats.SHORT.loss if win_loss_stats and win_loss_stats.SHORT is defined else 0 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul style="max-width:600px;margin:10px auto 0 auto;padding:0;">
+        {% for category, message in messages %}
+          <li class="flash-message {% if category=='success' %}success{% else %}error{% endif %}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

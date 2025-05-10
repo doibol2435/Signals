@@ -1,0 +1,57 @@
+[
+  {
+    "symbol": "ETHUSDT",
+    "timeframe": "4h",
+    "signal": "\ud83d\udfe2\u2b06\ufe0f LONG",
+    "entry": 2390.86,
+    "tp": 2523.904854913215,
+    "sl": 2316.946191714881,
+    "current_price": 2447.42,
+    "time": "2025-05-10 18:04",
+    "status": "\u23f3 \u0110ang theo d\u00f5i (+2.37%)"
+  },
+  {
+    "symbol": "BTCUSDT",
+    "timeframe": "30m",
+    "signal": "\ud83d\udd3b\ud83d\ude80 FUTURES SHORT",
+    "entry": 103137.8,
+    "tp": 102965.89060009892,
+    "sl": 103352.68674987635,
+    "current_price": 103254.3,
+    "time": "2025-05-10 22:58",
+    "status": "\u23f3 \u0110ang theo d\u00f5i (-0.11%)"
+  },
+  {
+    "symbol": "ETHUSDT",
+    "timeframe": "15m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 2449.17,
+    "tp": 2461.5212960913527,
+    "sl": 2433.7308798858094,
+    "current_price": 2446.46,
+    "time": "2025-05-10 23:23",
+    "status": "\u23f3 \u0110ang theo d\u00f5i (-0.11%)"
+  },
+  {
+    "symbol": "BNBUSDT",
+    "timeframe": "15m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 654.5,
+    "tp": 656.091750415917,
+    "sl": 652.5103119801038,
+    "current_price": 654.3,
+    "time": "2025-05-10 23:28",
+    "status": "\u23f3 \u0110ang theo d\u00f5i (-0.03%)"
+  },
+  {
+    "symbol": "ETHUSDT",
+    "timeframe": "30m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 2448.0,
+    "tp": 2466.142992048111,
+    "sl": 2425.321259939861,
+    "current_price": 2446.46,
+    "time": "2025-05-10 23:29",
+    "status": "\u23f3 \u0110ang theo d\u00f5i (-0.06%)"
+  }
+]
