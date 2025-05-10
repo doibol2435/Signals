@@ -53,5 +53,126 @@
     "current_price": 2448.0,
     "time": "2025-05-10 23:29",
     "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "ETHUSDT",
+    "timeframe": "1h",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 2464.32,
+    "tp": 2490.080734660449,
+    "sl": 2432.1190816744393,
+    "current_price": 2464.32,
+    "time": "2025-05-10 23:40",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "SOLUSDT",
+    "timeframe": "15m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 171.81,
+    "tp": 172.35088556469773,
+    "sl": 171.13389304412783,
+    "current_price": 171.81,
+    "time": "2025-05-10 23:42",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "LTCUSDT",
+    "timeframe": "15m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 103.34,
+    "tp": 103.75620970655305,
+    "sl": 102.81973786680868,
+    "current_price": 103.34,
+    "time": "2025-05-10 23:42",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "LINKUSDT",
+    "timeframe": "1h",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 16.745,
+    "tp": 16.901014035347824,
+    "sl": 16.549982455815222,
+    "current_price": 16.745,
+    "time": "2025-05-10 23:42",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "LINKUSDT",
+    "timeframe": "30m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 16.863,
+    "tp": 16.97987054112191,
+    "sl": 16.71691182359761,
+    "current_price": 16.863,
+    "time": "2025-05-10 23:51",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "LINKUSDT",
+    "timeframe": "15m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 16.861,
+    "tp": 16.942755083532045,
+    "sl": 16.75880614558495,
+    "current_price": 16.861,
+    "time": "2025-05-10 23:56",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "KAITOUSDT",
+    "timeframe": "1h",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 1.7329,
+    "tp": 1.775940230896628,
+    "sl": 1.6790997113792154,
+    "current_price": 1.7329,
+    "time": "2025-05-11 00:30",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "KAITOUSDT",
+    "timeframe": "30m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 1.8259,
+    "tp": 1.8644649719948554,
+    "sl": 1.777693785006431,
+    "current_price": 1.8259,
+    "time": "2025-05-11 00:45",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "LTCUSDT",
+    "timeframe": "30m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 103.4,
+    "tp": 104.05440991219331,
+    "sl": 102.58198760975837,
+    "current_price": 103.4,
+    "time": "2025-05-11 00:48",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "BNBUSDT",
+    "timeframe": "30m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 655.3,
+    "tp": 657.7971031112077,
+    "sl": 652.1786211109903,
+    "current_price": 655.3,
+    "time": "2025-05-11 00:52",
+    "status": "\u0110ang theo d\u00f5i"
+  },
+  {
+    "symbol": "KAITOUSDT",
+    "timeframe": "15m",
+    "signal": "\ud83d\udfe2\ud83d\ude80 FUTURES LONG",
+    "entry": 1.838,
+    "tp": 1.8717977218364377,
+    "sl": 1.7957528477044533,
+    "current_price": 1.838,
+    "time": "2025-05-11 00:55",
+    "status": "\u0110ang theo d\u00f5i"
   }
 ]

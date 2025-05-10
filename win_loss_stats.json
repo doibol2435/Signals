@@ -1,12 +1,12 @@
 {
   "LONG": {
-    "count": 3,
-    "win": 0,
+    "count": 9,
+    "win": 9,
     "loss": 0
   },
   "SHORT": {
-    "count": 12,
+    "count": 13,
     "win": 1,
-    "loss": 11
+    "loss": 12
   }
 }
